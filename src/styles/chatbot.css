@@ -1,0 +1,102 @@
+/* App.css */
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Lighter background */
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333; /* Dark text color */
+  }
+  
+  /* Chat window styles */
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    color: #333; /* Dark gray for the title */
+    margin-bottom: 20px;
+  }
+  
+  .chat-window {
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff; /* White chat window */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px; /* Added padding for better organization */
+  }
+  
+  .message {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .user {
+    background-color: #cce5ff; /* Light blue for user messages */
+    align-self: flex-end;
+  }
+  
+  .bot {
+    background-color: #e6f2ff; /* Lighter blue for bot messages */
+    align-self: flex-start;
+  }
+  
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    color: #333; /* Dark text color */
+    background-color: #fff; /* White input field */
+  }
+  
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
