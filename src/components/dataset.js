@@ -20,5 +20,34 @@ const counselingStrategies = [
 'Regular physical exercise and a balanced diet can positively impact ADHD symptoms',
 'Seeking support from a counselor or support groups for guidance and advice'
 ];
-
-module.exports = { adhdDataset, counselingStrategies };
+const diversePhrases = [
+    "I'm feeling anxious about an upcoming event.",
+    "I'm having trouble sleeping lately.",
+    "I'm feeling overwhelmed with work/school.",
+    "I'm feeling down and unmotivated.",
+    "I'm excited about a new project I'm working on.",
+    "I'm feeling stressed about family issues.",
+    "I'm having trouble concentrating on my tasks.",
+    "I'm feeling lonely and isolated.",
+    "I'm looking forward to the weekend."
+    // Add more diverse phrases here
+  ];
+  
+  const conversationalPhrases = [
+    "How's your day going?",
+    "What have you been up to lately?",
+    "Any plans for the weekend?",
+    "Do you have any hobbies or interests?",
+    "How do you cope with stress?",
+    "Have you tried any relaxation techniques?",
+    "Do you find it hard to focus sometimes?",
+    "Do you have any tips for staying motivated?"
+    // Add more conversational phrases here
+  ];
+  
+  module.exports = {
+    adhdDataset,
+    counselingStrategies,
+    diversePhrases,
+    conversationalPhrases
+  };

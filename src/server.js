@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const natural = require('natural');
 const cors = require('cors');
+const { startConversation, classifyUserMessage } = require('./components/greeting.js');
+const analyzeADHDSymptoms = require('./components/symptom-analysis.js');
+
 const app = express();
 const PORT = 3001;
-const { adhdDataset, counselingStrategies } = require('./dataset.js');
+const { adhdDataset, counselingStrategies } = require('./components/dataset.js');
 
+// Natural language classifier setup
+const natural = require('natural');
 const classifier = new natural.BayesClassifier();
 
 adhdDataset.forEach((phrase) => {
@@ -18,51 +22,41 @@ counselingStrategies.forEach((phrase) => {
 
 classifier.train();
 
-
-// Middleware to parse JSON body
+// Middleware setup
 app.use(bodyParser.json());
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend's URL
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204 // Set the preflight OPTIONS success status
-  };
-  app.use(cors(corsOptions));
-  
-  // Handle preflight request for all routes
-  app.options('*', cors(corsOptions));
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Endpoint to handle user messages
 app.post('/process-message', (req, res) => {
   const userMessage = req.body.message;
+  let botResponse;
 
-  // Function to classify user messages
-  function classifyUserMessage(userMessage) {
-    const classification = classifier.getClassifications(userMessage);
-    const topClassification = classification[0]; // Get the top classification
-    let botResponse;
-
-    if (topClassification.label === 'ADHD' && topClassification.value > -0.5) {
-      botResponse = 'It seems like you are experiencing symptoms related to ADHD. How can I assist you further?';
-    } else if (topClassification.label === 'ADHD' && topClassification.value <= -0.5) {
-      botResponse = 'I understand, ADHD symptoms can be challenging. Would you like to learn some coping strategies?';
-    } else {
-      botResponse = 'Thank you for sharing. Is there anything else you would like to discuss?';
-    }
-
-    return botResponse;
+  if (!req.body.message) {
+    startConversation(); // Greet the user with initial conversation messages
+  } else {
+    botResponse = analyzeADHDSymptoms(userMessage);
   }
 
-  const botResponse = classifyUserMessage(userMessage);
+  if (!botResponse) {
+    botResponse = classifyUserMessage(userMessage);
+  }
 
   res.json({ botResponse });
 });
 
-// Route handler for GET requests at the root URL ('/')
+// Root endpoint
 app.get('/', (req, res) => {
   res.send('Welcome to the ADHD Counseling Chatbot Server');
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

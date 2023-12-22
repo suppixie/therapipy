@@ -1,73 +1,65 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Make API requests
 import '../styles/chatbot.css';
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
-  const messagesEndRef = useRef(null);
+  const [messages, setMessages] = useState([]); // Store chat history
+  const [inputMessage, setInputMessage] = useState(''); // User input
 
-  const handleUserInput = async () => {
-    if (inputMessage.trim() !== '') {
-      setMessages([...messages, { text: inputMessage, sender: 'user' }]);
+  const sendMessage = async () => {
+    if (inputMessage.trim() === '') return;
 
-      try {
-        const response = await axios.post('http://localhost:3001/process-message', {
-          message: inputMessage
-        });
+    // Add user's message to the chat history
+    setMessages([...messages, { text: inputMessage, sender: 'user' }]);
+    setInputMessage(''); // Clear input field
 
-        const botResponse = response.data.botResponse;
-        setMessages([
-          ...messages,
-          { text: botResponse, sender: 'bot' }
-        ]);
-      } catch (error) {
-        console.error('Error sending message to server:', error);
-      }
+    try {
+      // Make an API call to your backend with the user's message
+      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', {
+        message: inputMessage,
+      });
 
-      setInputMessage('');
+      // Add the chatbot's response to the chat history
+      setMessages([...messages, { text: response.data.message, sender: 'bot' }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      // Handle errors here
     }
   };
 
-  const handleInputChange = (e) => {
-    setInputMessage(e.target.value);
+  // Handle input changes
+  const handleInputChange = (event) => {
+    setInputMessage(event.target.value);
   };
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Function to handle sending message on Enter key press
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
   };
-
-  useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="App">
-      <h1>ADHD Counseling Chatbot</h1>
-      <div className="chat-window">
-        <div className="messages">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}
-            >
-              {message.text}
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
+    <div className="chatbot-container">
+        <div className='title'>
+            <h1>Therapipy</h1>
         </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleUserInput();
-          }}
-        >
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={handleInputChange}
-            placeholder="Type a message..."
-          />
-          <button type="submit">Send</button>
-        </form>
+      <div className="chatbot-messages">
+        {messages.map((msg, index) => (
+          <div key={index} className={`message ${msg.sender}`}>
+            {msg.text}
+          </div>
+        ))}
+      </div>
+      <div className="chatbot-input">
+        <input
+          type="text"
+          placeholder="Type your message..."
+          value={inputMessage}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+        />
+        <button onClick={sendMessage}>Send</button>
       </div>
     </div>
   );
