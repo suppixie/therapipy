@@ -4,21 +4,33 @@ const natural = require('natural');
 const cors = require('cors');
 const app = express();
 const PORT = 3001;
+const { adhdDataset, counselingStrategies } = require('./dataset.js');
 
-// Training the classifier with a small dataset
 const classifier = new natural.BayesClassifier();
-classifier.addDocument('I have trouble focusing.', 'ADHD');
-classifier.addDocument('I feel restless and easily distracted.', 'ADHD');
-classifier.addDocument('I find it hard to follow instructions.', 'ADHD');
-classifier.addDocument('I often lose things and forget appointments.', 'ADHD');
-classifier.addDocument('I struggle with time management.', 'ADHD');
+
+adhdDataset.forEach((phrase) => {
+  classifier.addDocument(phrase, 'ADHD');
+});
+
+counselingStrategies.forEach((phrase) => {
+  classifier.addDocument(phrase, 'Counseling');
+});
+
 classifier.train();
+
 
 // Middleware to parse JSON body
 app.use(bodyParser.json());
-app.use(cors()); 
-
-
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204 // Set the preflight OPTIONS success status
+  };
+  app.use(cors(corsOptions));
+  
+  // Handle preflight request for all routes
+  app.options('*', cors(corsOptions));
 
 // Endpoint to handle user messages
 app.post('/process-message', (req, res) => {
