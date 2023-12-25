@@ -1,13 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Chatbot from './components/chatbot';
+import Chatbot from './chatbotpy.js';
 
 function App() {
-  return (
-    <div className="App">
-      <Chatbot/>
-    </div>
-  );
-}
+  <Chatbot/>
+  return {
+    
+   
+}}
 
 export default App;

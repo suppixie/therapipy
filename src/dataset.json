@@ -1,0 +1,119 @@
+[
+    {
+      "userMessage": "I'm feeling overwhelmed with my tasks at work.",
+      "botResponse": "It's common to feel overwhelmed. Have you tried breaking tasks into smaller steps?",
+      "emotion": "Neutral"
+    },
+    {
+      "userMessage": "I can't concentrate on my studies at all.",
+      "botResponse": "I understand. Let's try a breathing exercise to help regain focus.",
+      "emotion": "Frustration"
+    },
+    
+        {
+          "userMessage": "I feel restless and can't sit still.",
+          "botResponse": "It's common for individuals with ADHD to feel restless. Try taking short breaks and moving around.",
+          "emotion": "Restlessness"
+        },
+        {
+          "userMessage": "I'm struggling to organize my thoughts.",
+          "botResponse": "Organizing thoughts can be challenging. Have you considered jotting down your ideas or using mind-mapping techniques?",
+          "emotion": "Confusion"
+        },
+        {
+          "userMessage": "I forgot my friend's birthday again.",
+          "botResponse": "Memory lapses happen. Consider setting reminders or creating a routine to help remember important dates.",
+          "emotion": "Forgetfulness"
+        },
+        {
+          "userMessage": "I can't stop procrastinating.",
+          "botResponse": "Procrastination can be tough. Breaking tasks into smaller, manageable steps might help get started.",
+          "emotion": "Frustration"
+        },
+        {
+          "userMessage": "I'm feeling anxious about social interactions.",
+          "botResponse": "Social anxiety is common. Trying relaxation techniques or exposure therapy might help ease the anxiety.",
+          "emotion": "Anxiety"
+        },
+        {
+          "userMessage": "I'm overwhelmed by sensory stimuli.",
+          "botResponse": "Sensory overload can be challenging. Finding a quiet space or using sensory tools might provide relief.",
+          "emotion": "Overwhelm"
+        },
+        {
+          "userMessage": "I'm having trouble following conversations.",
+          "botResponse": "Difficulty in following conversations is common. Asking for clarification or summarizing discussions may help.",
+          "emotion": "Confusion"
+        },
+        {
+          "userMessage": "I feel like I'm constantly forgetting things.",
+          "botResponse": "Memory difficulties are part of ADHD. Using memory aids or practicing memory exercises might be beneficial.",
+          "emotion": "Forgetfulness"
+        },
+        {
+          "userMessage": "I can't seem to stay organized at work.",
+          "botResponse": "Staying organized can be challenging. Consider using digital tools or creating a structured routine.",
+          "emotion": "Disorganization"
+        },
+        {
+          "userMessage": "I'm having trouble starting tasks.",
+          "botResponse": "Starting tasks can be daunting. Setting small goals and rewarding progress might help initiate tasks.",
+          "emotion": "Procrastination"
+        },
+        {
+          "userMessage": "I'm feeling overwhelmed by distractions.",
+          "botResponse": "Distractions can be tough. Try creating a designated workspace or using noise-canceling headphones.",
+          "emotion": "Overwhelm"
+        },
+        {
+          "userMessage": "I struggle with time management.",
+          "botResponse": "Time management is challenging. Using schedules or prioritizing tasks might assist in managing time effectively.",
+          "emotion": "Frustration"
+        },
+        {
+          "userMessage": "I find it hard to maintain focus during conversations.",
+          "botResponse": "Maintaining focus in conversations is challenging. Practicing active listening techniques might improve focus.",
+          "emotion": "Distracted"
+        },
+        {
+          "userMessage": "I feel anxious about starting new projects.",
+          "botResponse": "Starting new projects can induce anxiety. Breaking tasks into smaller steps might alleviate the anxiety.",
+          "emotion": "Anxiety"
+        },
+        {
+          "userMessage": "I'm feeling exhausted from trying to concentrate.",
+          "botResponse": "Concentration can be draining. Taking short breaks and practicing relaxation techniques might help recharge.",
+          "emotion": "Exhaustion"
+        },
+        
+  {
+    "userMessage": "I'm struggling with impulsivity.",
+    "botResponse": "Managing impulsivity can be challenging. Taking a moment to pause before acting might help.",
+    "emotion": "Impulsivity"
+  },
+  {
+    "userMessage": "I'm feeling frustrated with forgetfulness.",
+    "botResponse": "Forgetfulness can be frustrating. Using memory techniques or mnemonic devices might assist in remembering things.",
+    "emotion": "Frustration"
+  },
+  {
+    "userMessage": "I can't seem to prioritize tasks.",
+    "botResponse": "Prioritizing tasks can be tricky. Consider using a task list or setting clear goals to prioritize effectively.",
+    "emotion": "Confusion"
+  },
+  {
+    "userMessage": "I'm having trouble following instructions.",
+    "botResponse": "Difficulty in following instructions is common. Asking for clarification or breaking instructions into smaller steps might help.",
+    "emotion": "Confusion"
+  },
+  {
+    "userMessage": "I feel overwhelmed by sensory overload in crowded places.",
+    "botResponse": "Crowded places can be overwhelming. Consider using sensory tools or finding quiet areas to mitigate the overload.",
+    "emotion": "Overwhelm"
+  }
+]
+
+      
+      
+  
+  
