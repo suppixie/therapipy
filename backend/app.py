@@ -3,9 +3,8 @@ from sentiment_cluster_tag import chatbot_response
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # This enables CORS for all routes
+CORS(app, resources={r"/process": {"origins": "*"}}) 
 
-# Your route definitions and other code...
 @app.route('/process', methods=['POST'])
 def process():
     try:
